@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="encuestaMusicalApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta Musical</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body ng-controller="EncuestaController as vm">
+    <div class="container">
+        <h1>Encuesta de Preferencias Musicales</h1>
+        
+        <!-- Formulario de encuesta -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nueva Encuesta</h3>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="vm.guardarEncuesta()" novalidate>
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="correo" ng-model="vm.nuevaEncuesta.correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estiloMusical">Estilo Musical Preferido</label>
+                        <select class="form-control" id="estiloMusical" ng-model="vm.nuevaEncuesta.estiloMusical" required>
+                            <option value="">Seleccione un estilo</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Clásica">Música Clásica</option>
+                            <option value="Electrónica">Electrónica</option>
+                            <option value="Reggaeton">Reggaeton</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="vm.cargando">
+    <span ng-if="!vm.cargando">Guardar Encuesta</span>
+    <span ng-if="vm.cargando">
+        <i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Guardando...
+    </span>
+</button>
+                </form>
+            </div>
+        </div>
+        <div class="alert alert-success" ng-if="vm.mensaje && !vm.mensaje.includes('Error')">
+        {{ vm.mensaje }}
+        </div>
+        <div class="alert alert-danger" ng-if="vm.mensaje && vm.mensaje.includes('Error')">
+        {{ vm.mensaje }}
+        </div>
+        <!-- Grilla de resultados -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Encuestas Registradas</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Correo Electrónico</th>
+                            <th>Estilo Musical</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="encuesta in vm.encuestas">
+                            <td>{{ encuesta.correo }}</td>
+                            <td>{{ encuesta.estiloMusical }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/encuestaController.js"></script>
+    <script src="app/services/encuestaService.js"></script>
+</body>
+</html>

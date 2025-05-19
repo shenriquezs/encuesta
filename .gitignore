@@ -1,0 +1,34 @@
+# Archivos de logs
+/logs/
+*.log
+npm-debug.log*
+
+# Carpetas de compilación
+/dist/
+/build/
+/www/
+
+# Carpetas de desarrollo
+/node_modules/
+
+# Archivos de caché
+/.cache/
+/.temp/
+/tmp/
+
+# Archivos de configuración (opcional)
+/.idea/
+/.vscode/
+
+# Archivos de pruebas
+/coverage/
+/test/
+
+# Archivos específicos del sistema operativo
+/.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Archivos generados por IDE
+/bin/
+/obj/

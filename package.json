@@ -1,0 +1,14 @@
+{
+  "name": "encuesta-musical",
+  "version": "1.0.0",
+  "description": "Aplicación de encuestas musicales con AngularJS",
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1"
+  },
+  "dependencies": {
+    "angular": "1.8.2"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
